@@ -26,6 +26,10 @@ public class MasterPageFactory {// java encapsulation
 	@FindBy(xpath = "(//*[contains(text(),'Sign out')])[1]")
 	private WebElement signOut;
 
+	@FindBy(xpath = "(//*[contains(text(),'Dresses')])[5]")
+	private WebElement dressbtn;
+	
+	
 	public WebElement getSigninbtn() {
 		return signinbtn;
 	}
