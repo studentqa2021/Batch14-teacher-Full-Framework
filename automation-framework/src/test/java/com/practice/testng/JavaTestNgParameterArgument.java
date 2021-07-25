@@ -7,24 +7,13 @@ import org.testng.annotations.Test;
 
 public class JavaTestNgParameterArgument {
 
-	static void getsalary(int a){
-		System.out.println(a);
-		
-	}
-	
-	
-	public static void main(String[] args) {
-		
-		getsalary(10);
 
-		
-	}
-	
 	@Test
-	@Parameters("browser")
-	public void gettest(String a) {
-
+	@Parameters("car")// name from xml
+	public void gettest(String a) {//normally never allow parameter
 		System.out.println(a);
 	}
-	
+
 }
+
+

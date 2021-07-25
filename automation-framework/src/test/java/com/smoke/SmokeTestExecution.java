@@ -13,17 +13,18 @@ import com.generic.MasterPageFactory;
 
 public class SmokeTestExecution {// Java + Selenium
 
-	WebDriver driver2;//global ==> instance
+	WebDriver driver;
 
 	@BeforeTest // setup
 	public void setup() {
 
-		driver2 = new DriverManager().getDriver();
-	}
+	 driver	= new DriverManager().getDriver();//open browser+ go to URL
+	}//end
 
 	@Test // actual test
 	public void loginTest() {
-		MasterPageFactory obj = new AutomationPracticeLogin().baseLogin(driver2);
+		//which browser + Which website ==> communication by driver
+		MasterPageFactory obj = new AutomationPracticeLogin().baseLogin(driver);//Login=null
 
 		Assert.assertTrue(obj.getSignOut().isDisplayed(), "Login Test Passed ");
 
@@ -31,7 +32,7 @@ public class SmokeTestExecution {// Java + Selenium
 
 	@AfterTest // close/quit
 	public void teardown() {
-		driver2.quit();
+		driver.quit();
 	}
 
 }

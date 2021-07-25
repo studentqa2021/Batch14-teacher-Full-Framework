@@ -1,11 +1,14 @@
 package com.practice.testng;
 
+import static org.testng.Assert.assertEquals;
+
 import java.io.File;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -16,19 +19,17 @@ import com.generic.AutomationPracticeLogin;
 import com.generic.DriverManager;
 
 //@Listeners(com.practice.testng.TestngListener.class)
-public class TestingTestngLisener {
-
-	int testdataExpected = 10;
-	int actualDataFound = 10;
+public class TestingExtentReport {
 
 	static ExtentReports extent;
 	ExtentTest test;
+	static WebDriver driver;
 
-	@BeforeClass
+	@BeforeTest
 	public static void startTest() {
-		ExtentSparkReporter repoter = new ExtentSparkReporter("target/ExtendsTestNGReport.html");
-		repoter.config().setDocumentTitle("Automation Selenium");
-		repoter.config().setReportName("Regression Test");
+		ExtentSparkReporter repoter = new ExtentSparkReporter("target/Batch14.html");
+		repoter.config().setDocumentTitle("Testng Automation");
+		repoter.config().setReportName("Smoke test");
 		repoter.config().setTheme(Theme.DARK);
 		extent = new ExtentReports();
 		extent.attachReporter(repoter);
@@ -37,22 +38,29 @@ public class TestingTestngLisener {
 		extent.setSystemInfo("Team ", "QA");
 		extent.setSystemInfo("Tester Name: ", System.getProperty("user.name"));
 
+		driver = new DriverManager().getDriver();
 	}
 
 	@Test
-	public void smoke() {
-		ExtentTest test = extent.createTest("Smoke");
-		WebDriver driver = new DriverManager().getDriver();
-		new AutomationPracticeLogin().baseLogin(driver);
+	public void login() {
+		 test = extent.createTest("Login");
+
+		//new AutomationPracticeLogin().baseLogin(driver);
 
 	}
 
+	@Test
+	public void dress() {
+		 test = extent.createTest("dress");
+		//System.out.println(2 / 0);
+		// code dress
+		Assert.assertEquals(2, 4);//fail
 
+	}
 
 	@AfterTest
 	public void teardown() {
-	
-		
+		driver.quit();
 		extent.flush();
 	}
 

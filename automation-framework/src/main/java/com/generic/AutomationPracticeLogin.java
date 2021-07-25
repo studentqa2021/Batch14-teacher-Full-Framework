@@ -12,7 +12,6 @@ import com.util.ScreenShot;
 public class AutomationPracticeLogin {
 
 	public  MasterPageFactory baseLogin(WebDriver driver) {// parameter 
-		
 		MasterPageFactory obj = new MasterPageFactory(driver);
 		Highlighter.addColor(driver, obj.getSigninbtn());
 		ScreenShot.getScreenShot(driver, "Home Page");

@@ -17,27 +17,35 @@ public class SmokeTestWithTestNG {
 
 	@BeforeTest
 	public void getDriverSetup() throws Throwable {
-		driver = new DriverManager().getDriver();
+		System.out.println("setup");
 	}
 
-	@Test
+	@Test(groups = {"Smoke"})
 	public void getLogin() throws Throwable {
 
-		obj = new AutomationPracticeLogin().baseLogin(driver);
-
-		Assert.assertTrue(obj.getSignOut().isDisplayed(), "Login Test Passed ");
+	System.out.println("Login");
 	}
 
-	@Test
-	public void getDressNo() throws Throwable {
+	@Test(groups = {"Regression"})
+	public void getDress() throws Throwable {//2nd
 
+	System.out.println("Dress");
+	}
+	@Test(groups = {"Regression"})
+	public void getWoman() throws Throwable {//1st
+
+		System.out.println("Woman");
+	}
+	
+	@Test(groups = {"Regression"})
+	public void getTshirt() throws Throwable {//3rd
+		System.out.println("T shirt");
 	
 	}
 
 	@AfterTest
-	public void getDriceClose() {
-		driver.quit();// close the browser
-
+	public void teardown() {
+		System.out.println("close");
 	}
 
 }

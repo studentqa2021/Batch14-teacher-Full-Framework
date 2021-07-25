@@ -44,11 +44,7 @@ public class TestngAllAnnotation {
 		System.out.println("This is BeforeMethod");
 	}
 	
-	@Test
-	public void getsalary() {
-		System.out.println("This is Test one");
-	}
-	
+
 
 	@AfterMethod
 	public void closeMethod() {

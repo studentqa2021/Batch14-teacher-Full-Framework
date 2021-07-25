@@ -5,19 +5,20 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
-public class CrossBrowsertesting {
+public class CrossBrowserWithJava {
+	
 	WebDriver driver;
-	@Test
-	@Parameters("browser")//chrome
-	public void getbrowser(String browser) throws Exception{//chrome
+	
+	public void getbrowser(String browser) {//chrome
 		//Check if parameter passed from TestNG is 'firefox'
 		if(browser.equalsIgnoreCase("ie")){
 		//create firefox instance
 			System.setProperty("webdriver.ie.driver", "./Driver/IEDriverServer.exe");
 			driver = new InternetExplorerDriver();
+			
+		
 		}
 		//Check if parameter passed as 'chrome'
 		else if(browser.equalsIgnoreCase("chrome")){
@@ -38,8 +39,20 @@ public class CrossBrowsertesting {
 		//driver.get("http://www.amazon.com/");
 		System.out.println("Opened Browser::"+browser);
 		driver.get("https://www.google.com/");
+		
 		driver.quit();
+		
+	
+		
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		CrossBrowserWithJava obj = new CrossBrowserWithJava();
+		//obj.getbrowser("chrome");
+		//obj.getbrowser("ie");
+		
 	}
 
-	
 }
